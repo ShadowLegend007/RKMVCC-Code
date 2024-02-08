@@ -30,6 +30,26 @@ int Incert_end(int value)
     }
 }
 
+int Counter()
+{
+    int count = 0;
+    if(start == NULL)
+    {
+        printf("Please create a linkedlist!!");
+    }
+    else
+    {
+        struct node *tmp;
+        tmp = start;
+        while( tmp -> next != NULL )
+        {
+            count++;
+            tmp = tmp -> next;
+        }
+    }
+    return count;
+}
+
 void Incert_bgain(int value)
 {
     struct node *tmp;
@@ -75,6 +95,11 @@ void Incert_any(int value, int index)
             }
             tmp -> next = p -> next;
             p -> next = tmp;
+            int counter=Counter();
+            if(index > counter)
+            {
+                printf("There is only %d no.s of nodes so we adding %d in last node.",counter,value);
+            }
         }
     }
 }
@@ -136,26 +161,6 @@ void Delete_any( int index )
             printf("This index is not available.\n");
         }
     }
-}
-
-int Counter()
-{
-    if(start == NULL)
-    {
-        printf("Please create a linkedlist!!");
-    }
-    else
-    {
-        struct node *tmp;
-        tmp = start;
-        int count = 1;
-        while( tmp -> next != NULL )
-        {
-            count++;
-            tmp = tmp -> next;
-        }
-    }
-    return count;
 }
 
 void Find(int a)
